@@ -35,6 +35,7 @@ The Splunk Universal Forwarder (UF) is a lightweight agent installed on the moni
 - Ran `index=windows | stats count by sourcetype | sort - count` in Splunk Search, which returned the expected sourcetypes, confirming data was being received and indexed correctly.
 
 ## 7. Sourcetypes Observed
+- `WinEventLog:Microsoft-Windows-Sysmon/Operational`
 - `WinEventLog:Security`
 - `WinEventLog:Application`
 - `WinEventLog:System`
