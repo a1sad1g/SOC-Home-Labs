@@ -9,7 +9,7 @@ This document covers the installation and initial configuration of Splunk Enterp
 
 ## 2. Prerequisites
 - Verified system requirements (RAM/CPU) against Splunk's official documentation before installing.
-- OS-level preparation: *(fill in what you actually changed — e.g., "no changes made" or "opened inbound port 9997 on Windows Firewall")*.
+- OS-level preparation: Disabled the Windows Firewall on the host machine to allow the connection with the Splunk Forwarder.
 - Created a Splunk account on splunk.com to download the installer, and selected the **Free** license.
 
 ## 3. Download & Installation
