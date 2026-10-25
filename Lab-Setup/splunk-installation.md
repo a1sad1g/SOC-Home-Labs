@@ -22,7 +22,7 @@ This document covers the installation and initial configuration of Splunk Enterp
 
 ![screenshot](Images/login.png)
 
-- Default Web UI port (8000) was kept unchanged. *(confirm: was it changed or not?)*
+
 
 ## 5. Receiving Configuration (for Forwarders)
 - Enabled the receiving port (9997) under **Settings > Forwarding and receiving > Configure receiving**.
