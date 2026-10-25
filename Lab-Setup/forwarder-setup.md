@@ -19,6 +19,7 @@ The Splunk Universal Forwarder (UF) is a lightweight agent installed on the moni
   - Windows Event Logs (Security, System, Application)
   - Sysmon Operational log (Microsoft-Windows-Sysmon/Operational)
 - These inputs were configured in the `inputs.conf` file.
+- By default, Splunk forwards Windows Event Log data in XML format (producing sourcetypes like `XmlWinEventLog:...`). In this lab, `renderXml = false` was set globally across all input stanzas in `inputs.conf`, so every forwarded log (Security, System, Application, and Sysmon Operational) is sent in plain, non-XML format instead — hence the `WinEventLog:...` sourcetypes shown in Section 7.
 
 ![screenshot](Images/inputs_file.png)
 
