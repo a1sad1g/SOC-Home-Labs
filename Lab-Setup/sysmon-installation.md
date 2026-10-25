@@ -21,7 +21,7 @@ Sysmon (System Monitor) is a Windows system service and device driver from Micro
 ## 5. Verifying Sysmon Is Running
 - Confirmed the Sysmon service was active using PowerShell, by running `sc.exe query sysmon64` and `Get-Service -Name "*Sysmon*"`.
 
-![screenshot](Images/sysmon_running.png)
+![screenshot](Images/sysmon-running.png)
 
 - Confirmed in Event Viewer by browsing to **Applications and Services Logs > Microsoft > Windows > Sysmon > Operational** and viewing live events.
 
