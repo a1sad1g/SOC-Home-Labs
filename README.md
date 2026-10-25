@@ -7,7 +7,7 @@ Build a lab environment to simulate, monitor, and analyze cyberattacks using SIE
 
 ## 🏗️ Architecture
 
-All machines run inside VMware on an isolated network (Host-Only) only splunk enterprise run on the Host OS.
+All machines run inside VMware on an isolated network (Host-Only) only splunk enterprise it's not on VM.
 
 | Machine | Role | Installed Tools |
 |---|---|---|
