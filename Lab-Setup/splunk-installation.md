@@ -29,7 +29,7 @@ This document covers the installation and initial configuration of Splunk Enterp
 
 ![screenshot](Images/forwarder_port.png)
 
-- The listener will be verified once the Universal Forwarder is installed on Windows Server 2016 (see `forwarder-setup.md`).
+- The listener will be verified once the Universal Forwarder is installed on Windows Server 2016 (see [forwarder-setup.md](forwarder-setup.md).
 
 
 ## 6. Index Creation
