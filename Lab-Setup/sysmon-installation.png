@@ -1,0 +1,39 @@
+# Sysmon Installation & Configuration
+
+This document covers installing Sysmon on Windows Server 2016 and the configuration used to control what gets logged.
+
+## 1. What Sysmon Is and Why It's Used
+Sysmon (System Monitor) is a Windows system service and device driver from Microsoft Sysinternals that logs detailed information about system activity to the Windows Event Log — including process creation with full command lines, network connections, file creation, and registry changes. Default Windows Event Logs record high-level events (such as logons or service changes) but do not capture this level of detail — for example, the native Security log can show *that* a process ran, but not its full command line, parent process, or hash. For a SOC lab focused on detecting attacker behavior (e.g., credential dumping, lateral movement, suspicious process execution).
+
+## 2. Sysmon Version
+- Version of Sysmon installed: `15.21.0.0`
+- Download Sysmon from here: [Sysmon](https://download.sysinternals.com/files/Sysmon.zip)
+
+## 3. Configuration File Used
+- I Configured sysmon by default
+
+## 4. Installation Steps
+- Command used to install Sysmon with the config (e.g., `sysmon64.exe -i config.xml` or `sysmon64.exe -accepteula -i config.xml`)
+
+## 5. Verifying Sysmon Is Running 
+- Confirmed the Sysmon service was active using PowerShell, by running `sc.exe query sysmon64` and `Get-Service -Name "*Sysmon*"`.
+
+![screenshot](Images/sysmon_running.png)
+
+- In event viewer you can confirmed it by looking in events.
+
+![screenshot](Images/event.png)
+
+## 6. Key Event IDs Being Logged
+- List of the Sysmon Event IDs :
+  - Event ID 1 – Process Creation
+  - Event ID 3 – Network Connection
+  - Event ID 10 – Process Access 
+  - Event ID 11 – File Created
+  - Event ID 13 – Registry Value Set
+
+
+## 7. Integration with Splunk
+- Confirming Sysmon logs appear in Windows Event Viewer correctly before forwarding
+- Confirmed Sysmon events are showing up in searchable events in Splunk with `index=* sourcetype=WinEventLog:Microsoft-Windows-Sysmon/Operational`
+
