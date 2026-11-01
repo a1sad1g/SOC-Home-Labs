@@ -76,31 +76,31 @@ index=windows sourcetype="WinEventLog:Microsoft-Windows-Sysmon/Operational" Even
 
 **Step 1 - Open Searches, Reports, and Alerts and click "New Alert"**
 
-![New Alert](images/new_alert.png)
+![New Alert](screenshot/new_alert.png)
 
 **Step 2 - Set the title, description and search query**
 
 > Note: Splunk showed an `Unbalanced quotes` warning at this stage. It is caused by quotes in the search/description being malformed when pasted. Re-typing the straight quotes `"` fixes it.
 
-![Alert title, description and search](images/create_alert3.png)
+![Alert title, description and search](screenshot/create_alert3.png)
 
 **Step 3 - Configure the schedule (cron `*/5 * * * *`, last 15 minutes) and the trigger condition**
 
-![Schedule and trigger condition](images/create_alert4.png)
+![Schedule and trigger condition](screenshot/create_alert4.png)
 
 **Step 4 - Configure throttling and the trigger action, then click Save**
 
-![Throttle and trigger action](images/create_alert6.png)
+![Throttle and trigger action](screenshot/create_alert6.png)
 
 **Step 5 - The alert is saved and enabled**
 
-![Alert enabled](images/alert.png)
+![Alert enabled](screenshot/alert.png)
 
 ## 6. Attack Simulation
 
 From the Kali machine, open a terminal:
 
-![Kali Linux desktop](images/linux.png)
+![Kali Linux desktop](screenshot/linux.png)
 
 Run a full-range SYN scan with service detection against the Windows Server:
 
@@ -117,7 +117,7 @@ nmap -sS -sV -p- --min-rate 2000 192.168.30.145
 
 **Result:** the host is up, **20 open ports** were found (65,515 filtered), and the scan finished in about 136 seconds. The exposed services (DNS 53, Kerberos 88, RPC 135, LDAP 389/3268, SMB 445, WinRM 5985, AD Web Services 9389, dynamic RPC 496xx, and others) confirm the target is an Active Directory Domain Controller.
 
-![Nmap scan output](images/nmap.png)
+![Nmap scan output](screenshot/nmap.png)
 
 ## 7. Evidence
 
@@ -125,7 +125,7 @@ nmap -sS -sV -p- --min-rate 2000 192.168.30.145
 
 A burst of Sysmon **Event ID 3 (Network connection detected)** appears at around 8:49 PM:
 
-![Sysmon events in Event Viewer](images/sysmon_event.png)
+![Sysmon events in Event Viewer](screenshot/sysmon_event.png)
 
 Details of one event:
 
@@ -140,7 +140,7 @@ Details of one event:
 | DestinationIp | `192.168.30.145` |
 | DestinationPort | 49665 |
 
-![Sysmon Event ID 3 details](images/event_sysmon2.png)
+![Sysmon Event ID 3 details](screenshot/event_sysmon2.png)
 
 ### 7.2 In Splunk - the same events ingested
 
@@ -150,23 +150,23 @@ Filtering on the attacker IP returns **138 events** in the last 15 minutes, all 
 index=windows sourcetype="WinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=3 SourceIp="192.168.30.128" | bin _time span=1m
 ```
 
-![Splunk events for the attacker IP](images/event_splunk.png)
+![Splunk events for the attacker IP](screenshot/event_splunk.png)
 
 Raw event view (here the connection to port 5985 - WinRM):
 
-![Splunk raw event](images/event_splunk2.png)
+![Splunk raw event](screenshot/event_splunk2.png)
 
 ### 7.3 Detection query result
 
 Running the detection query shows the attacker IP hitting **20 unique ports** in the 20:49 minute (`135, 139, 389, 445, 464, 593, 636, 3268, 3269, 5985, 9389, 49665-49707, 53, 88`), which matches the open ports reported by Nmap:
 
-![Detection query result](images/search_in_splunk.png)
+![Detection query result](screenshot/search_in_splunk.png)
 
 ### 7.4 Alert triggered
 
 The scheduled alert fired at **2026-10-31 20:50:18 EET** with Medium severity:
 
-![Triggered alert](images/triggered_alert.png)
+![Triggered alert](screenshot/triggered_alert.png)
 
 ## 8. Timeline
 
