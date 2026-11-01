@@ -33,22 +33,6 @@ All machines run inside VMware on an isolated network (Host-Only) only splunk en
    - Search & Correlation
 ```
 
-
-## ✅ Progress So Far
-
-1. Set up the VMware environment and created the three virtual machines.
-2. Installed and configured **Splunk Enterprise** as the central log collection server.
-3. Installed **Sysmon** on Windows Server 2016 with a Sysmon configuration file to capture detailed events (Process Creation, Network Connections, Registry Changes, etc.).
-4. Installed and connected **Splunk Universal Forwarder** on the Windows Server to forward logs to Splunk Enterprise.
-5. Verified logs (Sysmon logs + Windows Event Logs) are being received correctly on the Splunk dashboard.
-6. Prepared **Kali Linux** as the attack platform on the same network.
-
-## 🔜 Next Steps
-- Execute simulated attack scenarios from Kali against the Windows Server.
-- Write SPL (Search Processing Language) queries in Splunk to detect those attacks.
-- Build Dashboards and Alerts for each scenario.
-- Document each attack with: description - tool used - detection method - IOCs.
-
 ## 📚 References
 - [Sysmon - Microsoft Docs](https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon)
 - [Splunk Documentation](https://docs.splunk.com/)
