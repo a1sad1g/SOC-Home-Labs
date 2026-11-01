@@ -76,7 +76,7 @@ index=windows sourcetype="WinEventLog:Microsoft-Windows-Sysmon/Operational" Even
 
 **Step 1 - Open Searches, Reports, and Alerts and click "New Alert"**
 
-![New Alert](screenshot/new_alert.png)
+![New Alert](screenshot/alert.png)
 
 **Step 2 - Set the title, description and search query**
 
@@ -94,7 +94,7 @@ index=windows sourcetype="WinEventLog:Microsoft-Windows-Sysmon/Operational" Even
 
 **Step 5 - The alert is saved and enabled**
 
-![Alert enabled](screenshot/alert.png)
+![Alert enabled](screenshot/new_alert.png)
 
 ## 6. Attack Simulation
 
