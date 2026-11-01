@@ -80,8 +80,6 @@ index=windows sourcetype="WinEventLog:Microsoft-Windows-Sysmon/Operational" Even
 
 **Step 2 - Set the title, description and search query**
 
-> Note: Splunk showed an `Unbalanced quotes` warning at this stage. It is caused by quotes in the search/description being malformed when pasted. Re-typing the straight quotes `"` fixes it.
-
 ![Alert title, description and search](screenshot/create_alert4.png)
 
 **Step 3 - Configure the schedule (cron `*/5 * * * *`, last 15 minutes) and the trigger condition**
