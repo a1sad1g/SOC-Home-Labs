@@ -119,7 +119,14 @@ nmap -sS -sV -p- --min-rate 2000 192.168.30.145
 
 ## 7. Evidence
 
-### 7.1 On the victim - Sysmon logs in Event Viewer
+### 7.2 Alert triggered
+
+The scheduled alert fired at **2026-10-31 20:50:18 EET** with Medium severity:
+
+![Triggered alert](screenshot/triggered_alert.png)
+
+
+### 7.3 On the victim - Sysmon logs in Event Viewer
 
 A burst of Sysmon **Event ID 3 (Network connection detected)** appears at around 8:49 PM:
 
@@ -140,7 +147,7 @@ Details of one event:
 
 ![Sysmon Event ID 3 details](screenshot/event_sysmon2.png)
 
-### 7.2 In Splunk - the same events ingested
+### 7.3 In Splunk - the same events ingested
 
 Filtering on the attacker IP returns **138 events** in the last 15 minutes, all concentrated in a single minute:
 
@@ -154,17 +161,12 @@ Raw event view (here the connection to port 5985 - WinRM):
 
 ![Splunk raw event](screenshot/event_splunk2.png)
 
-### 7.3 Detection query result
+### 7.4 Detection query result
 
 Running the detection query shows the attacker IP hitting **20 unique ports** in the 20:49 minute (`135, 139, 389, 445, 464, 593, 636, 3268, 3269, 5985, 9389, 49665-49707, 53, 88`), which matches the open ports reported by Nmap:
 
 ![Detection query result](screenshot/search_in_splunk.png)
 
-### 7.4 Alert triggered
-
-The scheduled alert fired at **2026-10-31 20:50:18 EET** with Medium severity:
-
-![Triggered alert](screenshot/triggered_alert.png)
 
 ## 8. Timeline
 
