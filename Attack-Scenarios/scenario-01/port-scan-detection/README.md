@@ -96,7 +96,7 @@ index=windows sourcetype="WinEventLog:Microsoft-Windows-Sysmon/Operational" Even
 
 ## 6. Attack Simulation
 
-From the Kali machine, open a terminal:
+From the Kali machine, I opened a terminal:
 
 ![Kali Linux desktop](screenshot/linux.png)
 
