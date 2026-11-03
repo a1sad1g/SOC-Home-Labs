@@ -42,7 +42,7 @@ Created from **Settings → Searches, Reports, and Alerts → New Alert**.
 | Throttle | Suppress for 5 minutes |
 | Action | Add to Triggered Alerts – Severity: Medium |
 
-![Create alert 1](Images/create_alert1.png)
+![Create alert 1](Images/create_alert.png)
 ![Create alert 2](Images/create_alert2.png)
 ![Create alert 3](Images/create_alert3.png)
 
@@ -118,7 +118,6 @@ Each connection attempt generates a Windows **Event 5156** on the server. The ra
 | 07:18:13 PM | 57588 | ![event2](Images/event1.png) |
 | 07:18:24 PM | 60506 | ![event1](Images/event2.png) |
 
-Key fields used for detection: `EventCode`, `Source_Address`, `Destination_Address`, `Destination_Port`.
 
 ---
 
