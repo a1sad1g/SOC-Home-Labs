@@ -26,7 +26,7 @@ Prerequisite on the Windows host: enable auditing for **Filtering Platform Conne
 
 Created from **Settings → Searches, Reports, and Alerts → New Alert**.
 
-![New Alert](images/new_alert.png)
+![New Alert](Images/new_alert.png)
 
 | Setting | Value |
 |---|---|
@@ -42,19 +42,19 @@ Created from **Settings → Searches, Reports, and Alerts → New Alert**.
 | Throttle | Suppress for 5 minutes |
 | Action | Add to Triggered Alerts – Severity: Medium |
 
-![Create alert 1](images/create_alert1.png)
-![Create alert 2](images/create_alert2.png)
-![Create alert 3](images/create_alert3.png)
+![Create alert 1](Images/create_alert1.png)
+![Create alert 2](Images/create_alert2.png)
+![Create alert 3](Images/create_alert3.png)
 
 After saving, the alert appears in the saved searches list as **Enabled**:
 
-![Alert created](images/alert_creation.png)
+![Alert created](Images/alert_creation.png)
 
 ---
 
 ## 3. Attack Simulation
 
-![Attacker machine](images/linux.png)
+![Attacker machine](Images/linux.png)
 
 From the Kali machine, three common enumeration tools were run against the Windows server over SMB/RPC (port 445), using null sessions:
 
@@ -62,19 +62,19 @@ From the Kali machine, three common enumeration tools were run against the Windo
 ```bash
 enum4linux -a 192.168.30.145
 ```
-![enum4linux](images/attack_number1.png)
+![enum4linux](Images/attack_number1.png)
 
 **smbclient** – list available shares
 ```bash
 smbclient -L //192.168.30.145/ -N
 ```
-![smbclient](images/attack_number2.png)
+![smbclient](Images/attack_number2.png)
 
 **rpcclient** – enumerate domain users
 ```bash
 rpcclient -U "" -N 192.168.30.145 -c "enumdomusers"
 ```
-![rpcclient](images/attack_number3.png)
+![rpcclient](Images/attack_number3.png)
 
 > ⚠️ Run these only in your own isolated lab or on systems you are authorized to test.
 
@@ -84,7 +84,7 @@ rpcclient -U "" -N 192.168.30.145 -c "enumdomusers"
 
 After re-running the attack, the alert fired at **2026-11-03 19:20:01** and appeared under **Activity → Triggered Alerts** with Medium severity. From there, **View Results** opens the underlying events for investigation.
 
-![Triggered alert](images/alert_triage.png)
+![Triggered alert](Images/alert_triage.png)
 
 
 ## 5. Detection Logic
@@ -106,7 +106,7 @@ index=windows sourcetype="WinEventLog:Security" EventCode=5156 Destination_Port=
 
 15 SMB connections from a single source in 2 minutes, well above the threshold of 8.
 
-![Search result](images/result.png)
+![Search result](Images/result.png)
 
 
 ## 6. Log Analysis
@@ -115,8 +115,8 @@ Each connection attempt generates a Windows **Event 5156** on the server. The ra
 
 | Time | Source Port | Screenshot |
 |---|---|---|
-| 07:18:13 PM | 57588 | ![event2](images/event2.png) |
-| 07:18:24 PM | 60506 | ![event1](images/event1.png) |
+| 07:18:13 PM | 57588 | ![event2](Images/event1.png) |
+| 07:18:24 PM | 60506 | ![event1](Images/event2.png) |
 
 Key fields used for detection: `EventCode`, `Source_Address`, `Destination_Address`, `Destination_Port`.
 
