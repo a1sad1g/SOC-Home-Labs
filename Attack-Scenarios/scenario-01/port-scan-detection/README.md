@@ -174,9 +174,9 @@ Details of one event:
 |---|---|
 | 20:45 | Alert saved and scheduled (`*/5 * * * *`) |
 | 20:47 | Nmap scan started from Kali |
-| ~20:49 | Burst of Sysmon Event ID 3 on the Windows Server |
+| 20:49 | Burst of Sysmon Event ID 3 on the Windows Server |
 | 20:49 | Splunk bucket shows 20 unique ports from `192.168.30.128` |
-| 20:50:18 | **Alert "SOC - Potential Port Scan Detection" triggered** |
+| 20:50 | **Alert "SOC - Potential Port Scan Detection" triggered** |
 
 ## 9. Analysis (Analyst Perspective)
 
