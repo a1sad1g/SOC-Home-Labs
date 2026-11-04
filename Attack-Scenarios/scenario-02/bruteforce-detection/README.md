@@ -62,7 +62,7 @@ From the Kali machine, [Hydra](https://github.com/vanhauser-thc/thc-hydra) was u
 hydra -l Administrator -P password.txt smb://192.168.30.145
 ```
 
-![Hydra attack](image/attack_number1.png)
+![Hydra attack](image/attack.png)
 
 > ⚠️ Run this only in your own isolated lab or on systems you are authorized to test.
 
@@ -72,7 +72,7 @@ hydra -l Administrator -P password.txt smb://192.168.30.145
 
 After running the attack, the alert fired at **2026-11-03 23:30:02** and appeared under **Activity → Triggered Alerts** with **High** severity. **View Results** opens the underlying events for investigation.
 
-![Triggered alert](image/alert_triage_1.png)
+![Triggered alert](image/alert_triage.png)
 
 ## 4. Detection Logic
 
