@@ -42,19 +42,19 @@ Created from **Settings → Searches, Reports, and Alerts → New Alert**.
 | Throttle | Suppress for 2 minutes |
 | Action | Add to Triggered Alerts – Severity: **High** |
 
-![Create alert 1](images/create_aler.png)
-![Create alert 2](images/create_alert2.png)
-![Create alert 3](images/create_alert3.png)
+![Create alert 1](image/create_aler.png)
+![Create alert 2](image/create_alert2.png)
+![Create alert 3](image/create_alert3.png)
 
 After saving, the alert appears in the saved searches list as **Enabled**:
 
-![Alert created](images/alert_creation.png)
+![Alert created](image/alert_creation.png)
 
 ---
 
 ## 2. Attack Simulation
 
-![Attacker machine](images/linux.png)
+![Attacker machine](image/linux.png)
 
 From the Kali machine, [Hydra](https://github.com/vanhauser-thc/thc-hydra) was used to guess the `Administrator` password over SMB using a wordlist (`password.txt`):
 
@@ -62,7 +62,7 @@ From the Kali machine, [Hydra](https://github.com/vanhauser-thc/thc-hydra) was u
 hydra -l Administrator -P password.txt smb://192.168.30.145
 ```
 
-![Hydra attack](images/attack.png)
+![Hydra attack](image/attack.png)
 
 > ⚠️ Run this only in your own isolated lab or on systems you are authorized to test.
 
@@ -72,7 +72,7 @@ hydra -l Administrator -P password.txt smb://192.168.30.145
 
 After running the attack, the alert fired at **2026-11-03 23:30:02** and appeared under **Activity → Triggered Alerts** with **High** severity. **View Results** opens the underlying events for investigation.
 
-![Triggered alert](images/alert_triage_1.png)
+![Triggered alert](image/alert_triage_1.png)
 
 ## 4. Detection Logic
 
@@ -93,18 +93,18 @@ index=windows sourcetype="WinEventLog:Security" EventCode=4625
 
 21 failed logons from a single source within one 5-minute window.
 
-![Search result](images/result_1.png)
+![Search result](image/result_1.png)
 
 
 ## 3. Log Analysis
 
 Every failed attempt generates a **Event 4625** on the server. Filtering on the attacker's IP returned **21 events** within about a minute:
 
-![Events in Splunk](images/event.png)
+![Events in Splunk](image/event.png)
 
 Looking at a single event:
 
-![Event header](images/event2.png)
+![Event header](image/event2.png)
 
 Key fields in the event:
 
@@ -119,8 +119,8 @@ Key fields in the event:
 | Workstation Name | `\\192.168.30.128` | Origin of the request |
 | Authentication Package | NTLM (`NtLmSsp`) | Protocol used |
 
-![Failure information](images/event3.png)
-![Authentication details](images/event4.png)
+![Failure information](image/event3.png)
+![Authentication details](image/event4.png)
 
 ---
 
