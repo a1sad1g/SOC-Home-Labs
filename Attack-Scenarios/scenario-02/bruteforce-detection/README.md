@@ -26,7 +26,7 @@ Prerequisite on the Windows host: enable auditing for **Logon** failures so that
 
 Created from **Settings → Searches, Reports, and Alerts → New Alert**.
 
-![New Alert](images/new_alert.png)
+![New Alert](image/new_alert.png)
 
 | Setting | Value |
 |---|---|
@@ -62,7 +62,7 @@ From the Kali machine, [Hydra](https://github.com/vanhauser-thc/thc-hydra) was u
 hydra -l Administrator -P password.txt smb://192.168.30.145
 ```
 
-![Hydra attack](image/attack.png)
+![Hydra attack](image/attack_number1.png)
 
 > ⚠️ Run this only in your own isolated lab or on systems you are authorized to test.
 
@@ -93,7 +93,7 @@ index=windows sourcetype="WinEventLog:Security" EventCode=4625
 
 21 failed logons from a single source within one 5-minute window.
 
-![Search result](image/result_1.png)
+![Search result](image/result.png)
 
 
 ## 3. Log Analysis
