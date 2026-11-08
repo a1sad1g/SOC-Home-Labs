@@ -193,11 +193,4 @@ Details of one event:
 3. Look for follow-up activity on the discovered services (LDAP queries, Kerberos requests, WinRM sessions).
 4. If unauthorized: isolate or block the source and escalate.
 
-
-## 10. Lessons Learned
-
-- Sysmon Event ID 3 is a useful source for detecting network reconnaissance on endpoints.
-- `stats dc()` combined with `bin _time` is a simple and effective pattern for volume-based detections.
-- Testing a rule with a real attack simulation is the only way to confirm that logging, ingestion, the query, and the alert pipeline all work together.
-
 > **Disclaimer:** All activity was performed in an isolated home lab on systems I own, for educational purposes only.
