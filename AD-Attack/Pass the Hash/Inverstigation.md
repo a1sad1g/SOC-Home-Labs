@@ -1,4 +1,4 @@
-# Investigation Documentation: Pass-the-Hash – NTLM Lateral Movement
+# Investigation: Pass-the-Hash – NTLM Lateral Movement
 
 ## Incident Summary
 
