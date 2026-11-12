@@ -1,4 +1,4 @@
-# Splunk Alert Documentation: Pass-the-Hash Detected – NTLM Lateral Movement
+# Splunk Alert: Pass-the-Hash Detected – NTLM Lateral Movement
 
 ## Overview
 This document describes the Splunk alert configured to detect **Pass-the-Hash (PtH)** activity within the environment. The alert monitors Windows authentication events for signs of NTLM authentication being used in place of Kerberos, which is a strong indicator of lateral movement using stolen or replayed credential hashes (MITRE ATT&CK technique **T1550.002**).
@@ -23,6 +23,8 @@ index=windows sourcetype="WinEventLog:Security" EventCode=4624 Logon_Type=3 Auth
 | stats count by Account_Name, Source_Network_Address
 ```
 
+![Alert](Images/1.png)
+
 ### Query Breakdown
 - **`index=windows sourcetype="WinEventLog:Security"`** – Searches Windows Security event logs.
 - **`EventCode=4624`** – Filters for successful logon events.
@@ -40,6 +42,8 @@ index=windows sourcetype="WinEventLog:Security" EventCode=4624 Logon_Type=3 Auth
 
 The search continuously scans the last 15 minutes of logs every 2 minutes, providing near real-time detection coverage.
 
+![Alert](Images/2.png)
+
 ## Trigger Conditions
 | Field | Value |
 |---|---|
@@ -56,6 +60,9 @@ Because the trigger is set to **"For each result"**, a separate alert instance i
 | **Add to Triggered Alerts** | Severity: **High** |
 
 When the alert fires, it is logged to Splunk's Triggered Alerts list with a **High** severity rating, ensuring it is prioritized for analyst review.
+
+![Alert](Images/3.png)
+![Alert](Images/4.png)
 
 ---
 
