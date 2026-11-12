@@ -58,17 +58,6 @@ index=windows sourcetype="WinEventLog:Security" EventCode=5156 Source_Address="1
 - The destination port `49668` is a dynamic RPC port typically used for DCERPC/DRSUAPI traffic - consistent with the `secretsdump.py` DRSUAPI fallback method observed on the attacker side.
 - Source `192.168.30.128` matches the same source IP seen in the `4624` logon events for `Ali` in Step 3, and the destination `192.168.30.145` matches the target host used in the `impacket-secretsdump` command.
 
-## Correlation Summary - Full Attack Chain
-
-| Time (approx.) | Source | Destination | Evidence | Event |
-|---|---|---|---|---|
-| 11:17-11:32 | 192.168.30.128 (Kali/attacker) | 192.168.30.145 (DC) | EventCode 5156 | Inbound connection accepted to `lsass.exe` on DC |
-| 11:17-11:32 | 192.168.30.128 | WIN-8R2EDC1A59K | EventCode 4624 (x2) | Successful logon as `Ali` from attacker IP |
-| 11:17-11:32 | Ali@SADEG | Domain object | EventCode 4662 (x10) | Replicating Directory Changes / Changes All (DCSync) |
-| 11:32:05 | - | - | Splunk Alert | **DCSync Detected - Directory Replication** fired (Critical) |
-
-This chain confirms: the attacker authenticated as `Ali` from `192.168.30.128`, established a connection to the Domain Controller's LSASS process, and issued multiple directory replication (DCSync) requests - matching exactly the `impacket-secretsdump` activity captured on the attacker's terminal.
-
 ## Conclusion
 
 The investigation **confirms true positive**. The alert correctly detected an active DCSync attack:
