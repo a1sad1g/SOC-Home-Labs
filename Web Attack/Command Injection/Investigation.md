@@ -24,7 +24,7 @@ Viewing the alert results shows Apache (`httpd.exe`) spawning `cmd.exe` twice, r
 
 Searching the HTTP logs (`index=http sourcetype=dvwa_post`) confirms the same activity from the web application side, from source IP `192.168.30.128`:
 
-![HTTP logs](images/investigation_16.png)
+![HTTP logs](images/16.png)
 
 This confirms the injected commands came through the DVWA Command Injection form.
 
