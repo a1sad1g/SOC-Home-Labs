@@ -18,7 +18,7 @@ index=botsv1 earliest=0
 
 **Why:** Shows which sources are available (`stream:http`, `suricata`, `iis`, `fgt_utm`, Sysmon, and so on). Web attack questions point to `stream:http`; endpoint questions point to Sysmon.
 
-![Sourcetype overview](../Screenshot/sourcetype.png)
+![Sourcetype overview](Screenshot/sourcetype.png)
 
 ---
 
@@ -35,7 +35,7 @@ index=botsv1 sourcetype=stream:http imreallynotbatman.com
 
 **Answer:** `40.80.148.42` is the top source by request volume.
 
-![Q101](../Screenshot/source_ip.png)
+![Q101](Screenshot/source_ip.png)
 
 ### Q102: What company created the web vulnerability scanner used by Po1s0n1vy?
 
@@ -47,7 +47,7 @@ index=botsv1 sourcetype=stream:http imreallynotbatman.com scanning src_ip="40.80
 
 **Answer:** The traffic identifies the scanner as **Acunetix**, so the company is Acunetix.
 
-![Q102](../Screenshot/Company_name.png)
+![Q102](Screenshot/Company_name.png)
 
 ### Q103: What content management system is imreallynotbatman.com likely using??
 
@@ -60,7 +60,7 @@ index=botsv1 sourcetype=stream:http imreallynotbatman.com scanning src_ip="40.80
 **Finding:** **Joomla**.
 
 
-![Q103](../Screenshot/Content_management_system.png)
+![Q103](Screenshot/Content_management_system.png)
 
 **Phase takeaway:** One IP generating high-volume automated requests is the reconnaissance stage.
 
@@ -73,7 +73,7 @@ index=botsv1 sourcetype=stream:http src_ip="192.168.250.70" | table src_ip dest_
 ```
 **Answer:** `poisonivy-is-coming-for-you-batman.jpeg`
 
-![Q104](../Screenshot/Defaced_file.png)
+![Q104](Screenshot/Defaced_file.png)
 
 
 ### Q105: This attack used dynamic DNS to resolve to the malicious IP. What fully qualified domain name (FQDN) is associated with this attack?
@@ -85,7 +85,7 @@ index=botsv1 sourcetype=stream:http src_ip="192.168.250.70" uri="poisonivy-is-co
 ```
 **Answer:** `prankglassinebracket.jumpingcrab.com`
 
-![Q105](../Screenshot/FQDN.png)
+![Q105](Screenshot/FQDN.png)
 
 ### Q106: What IP address has Po1s0n1vy tied to domains that are pre-staged to attack Wayne Enterprises?
 
@@ -96,11 +96,11 @@ index=botsv1 sourcetype=stream:http src_ip="192.168.250.70" uri="poisonivy-is-co
 ### Q107: Based on the data gathered from this attack and common open source intelligence sources for domain names, what is the email address that is most likely associated with Po1s0n1vy APT group?
 
 **Approach:** Browsing virustotal for IP `23.22.63.114` and see the domains that involving with the IP
-![threat_intel](../Screenshot/Threat_intel1.png)
+![threat_intel](Screenshot/Threat_intel1.png)
 
 Searching these domains on Whois.com and see the emails that associated or matched with author 
 
-![threat_intel](../Screenshot/Threat_intel2.png)
+![threat_intel](Screenshot/Threat_intel2.png)
 
 **Answer:** `abuse@godaddy.com`
 
@@ -110,7 +110,7 @@ Searching these domains on Whois.com and see the emails that associated or match
 ```spl
 index=botsv1 sourcetype=stream:http imreallynotbatman.com http_method="POST" form_data="*passwd*" | stats count by src_ip | sort - count
 ```
-![Brute_force](../Screenshot/Brute_force_ip.png)
+![Brute_force](Screenshot/Brute_force_ip.png)
 
 **Answer:** `23.22.63.114`
 
@@ -124,7 +124,7 @@ index=botsv1 sourcetype="xmlwineventlog:microsoft-windows-sysmon/operational" 23
 
 **Answer:** `3791.exe`.
 
-![Q109](../Screenshot/Executable_file.png)
+![Q109](Screenshot/Executable_file.png)
 
 
 
@@ -144,7 +144,7 @@ index=botsv1 sourcetype=stream:http src_ip="23.22.63.114" dest_ip="192.168.250.7
 
 **Answer:** `123456`
 
-![First_brute_force](../Screenshot/first_password.png)
+![First_brute_force](Screenshot/first_password.png)
 
 ### Q115: One of the passwords in the brute force attack is James Brodsky's favorite Coldplay song. Hint: we are looking for a six character word on this one. Which is it? 
 
@@ -156,7 +156,7 @@ index=botsv1 sourcetype=stream:http src_ip="23.22.63.114" dest_ip="192.168.250.7
 
 **Answer:** `yellow`
 
-![Coldplay](../Screenshot/Coldplay_song.png)
+![Coldplay](Screenshot/Coldplay_song.png)
 
 ### Q116: What was the correct password for admin access to the content management system running "imreallynotbatman.com"?
 
@@ -166,7 +166,7 @@ index=botsv1 sourcetype=stream:http http_method="POST" form_data="*passwd*"  src
 
 **Answer:** `batman`
 
-![Batman](../Screenshot/Admin_password.png)
+![Batman](Screenshot/Admin_password.png)
 
 ### Q117: What was the average password length used in the password brute forcing attempt? 
 
@@ -176,7 +176,7 @@ index=botsv1 sourcetype=stream:http imreallynotbatman src_ip="23.22.63.114" form
 
 **Answer:** `6`
 
-![Average](../Screenshot/Average.png)
+![Average](Screenshot/Average.png)
 
 ### Q118: How many seconds elapsed between the time the brute force password scan identified the correct password and the compromised login?
 
@@ -185,14 +185,14 @@ This spl for the first time for successful brute force
 ```spl
 index=botsv1 sourcetype=stream:http imreallynotbatman src_ip="23.22.63.114" form_data="*passwd=batman*" | table _time form_data
 ```
-![time](../Screenshot/time_for_successfuly_brute_force.png)
+![time](Screenshot/time_for_successfuly_brute_force.png)
 
 This for the time of first login
 
 ```spl
 index=botsv1 sourcetype=stream:http imreallynotbatman src_ip="40.80.148.42" form_data="*passwd=batman*" | table _time form_data
 ```
-![Time](../Screenshot/time_for_login.png)
+![Time](Screenshot/time_for_login.png)
 
 **Answer:** `92.16`
 
@@ -204,7 +204,7 @@ index=botsv1 sourcetype=stream:http imreallynotbatman src_ip="23.22.63.114" form
 
 **Answer:** `412`
 
-![passwords](../Screenshot/unique_password.png)
+![passwords](Screenshot/unique_password.png)
 
 
 
