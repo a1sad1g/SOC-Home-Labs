@@ -50,7 +50,7 @@ index=windows sourcetype=WinEventLog:Security EventCode=4663 Object_Name="*hacky
 | table _time Account_Name Object_Name
 ```
 
-![Windows Security EventCode 4663 - Object access to hackyou.php](images/13.png)
+![Windows Security EventCode 4663 - Object access to hackyou.php](images/14.png)
 
 **Result:** 113 events over the investigation window, all referencing:
 
@@ -77,7 +77,7 @@ CurrentDirectory="C:\\xampp\\htdocs\\dvwa\\hackable\\uploads\\"
 | table _time ParentImage Image ParentCommandLine CommandLine User
 ```
 
-![Sysmon process creation events](images/14.png)
+![Sysmon process creation events](images/13.png)
 
 
 ### Analyst Note – Critical Finding
