@@ -26,6 +26,8 @@ root@kali:/home/user# python3 -m http.server 8888
 Serving HTTP on 0.0.0.0 port 8888 (http://0.0.0.0:8888/) ...
 ```
 
+![listener](images/6.png)
+
 This listener will receive any HTTP requests sent to port `8888`, including the stolen cookie value appended as a query string parameter.
 
 ---
