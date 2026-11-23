@@ -96,7 +96,7 @@ index=http sourcetype=access_combined uri="*hackyou.php*"
 | table _time clientip method uri file useragent
 ```
 
-![Apache access log - requests to hackyou.php](images/15.png)
+![Apache access log - requests to hackyou.php](images/16.png)
 
 
 ### Analyst Note
