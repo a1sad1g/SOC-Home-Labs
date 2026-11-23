@@ -51,7 +51,7 @@ The raw URI captured by Splunk is URL-encoded:
 
 ---
 
-## 4. Step 3: Correlate with Attacker Evidence
+## 4. Step 3: Evidences
 
 | Evidence source | Finding |
 |---|---|
