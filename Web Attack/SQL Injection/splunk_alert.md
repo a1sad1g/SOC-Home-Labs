@@ -44,6 +44,8 @@ index=http sourcetype=access_combined
 
 ![Alert](images/3.png)
 
+![Alert](images/4.png)
+
 ---
 
 ## 4. Limitations and Tuning
