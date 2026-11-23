@@ -1,4 +1,4 @@
-7# BOTS v1 APT Walkthrough: Step-by-Step Investigation
+# BOTS v1 APT Walkthrough: Step-by-Step Investigation
 
 This walkthrough follows the investigation in the order an analyst would work it: from first signs of scanning, through the brute force and compromise, to the OSINT pivots. Each step has the reasoning, the SPL, and a screenshot.
 
